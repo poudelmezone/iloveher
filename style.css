@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    z-index: 2;
+    padding: 1em;
+    animation: fadeIn 2s ease-in-out forwards;
+    opacity: 0;
+    text-align: center;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .line {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .char {
+    width: 1ch;
+    display: inline-block;
+    text-transform: none;
+    color: #00ffcc;
+  }
+
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: float 4s linear infinite;
+    opacity: 0.8;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: -10px;
+    top: 0;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(45deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    body {
+      font-size: 1rem;
+    }
+
+    .char {
+      width: 10px;
+    }
+  }
